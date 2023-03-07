@@ -108,6 +108,7 @@ public class AuthorRepositoryTests {
         author.setPostalCode("11100");
         author.setPhone("111-222-3333");
         author.setEmail("sking@gmail.com");
+        author.setBooks(new HashSet<Book>());
 
         author = authorRepo.save(author);
 

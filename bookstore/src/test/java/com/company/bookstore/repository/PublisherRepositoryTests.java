@@ -3,6 +3,7 @@ package com.company.bookstore.repository;
 import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
 import com.company.bookstore.model.Publisher;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,13 @@ public class PublisherRepositoryTests {
 
     @Autowired
     PublisherRepository publisherRepo;
+
+    @Before
+    public void setUp() {
+        publisherRepo.deleteAll();
+        bookRepo.deleteAll();
+        authorRepo.deleteAll();
+    }
 
     @Test
     public void shouldAddAndGetPublisher() {
@@ -60,6 +68,7 @@ public class PublisherRepositoryTests {
         publisher.setPostalCode("11100");
         publisher.setPhone("111-222-3333");
         publisher.setEmail("mcGrawHill@gmail.com");
+        publisher.setBooks(new HashSet<Book>());
 
         publisher = publisherRepo.save(publisher);
 
@@ -71,12 +80,14 @@ public class PublisherRepositoryTests {
         publisher2.setPostalCode("10013");
         publisher2.setPhone("345-768-9846");
         publisher2.setEmail("pHudson@gmail.com");
+        publisher2.setBooks(new HashSet<Book>());
 
         publisher = publisherRepo.save(publisher2);
 
-        List<Publisher> publisherList = publisherRepo.findAll();
+        List<Publisher> pList = publisherRepo.findAll();
 
-        assertEquals(2, publisherList.size());
+        assertEquals(pList.size(), 2);
+
     }
 
     @Test
@@ -89,6 +100,7 @@ public class PublisherRepositoryTests {
         publisher.setPostalCode("11100");
         publisher.setPhone("111-222-3333");
         publisher.setEmail("mcGrawHill@gmail.com");
+        publisher.setBooks(new HashSet<Book>());
 
         publisher = publisherRepo.save(publisher);
 
@@ -100,6 +112,7 @@ public class PublisherRepositoryTests {
         publisher2.setPostalCode("10013");
         publisher2.setPhone("345-768-9846");
         publisher2.setEmail("pHudson@gmail.com");
+        publisher2.setBooks(new HashSet<Book>());
 
         publisher = publisherRepo.save(publisher2);
 

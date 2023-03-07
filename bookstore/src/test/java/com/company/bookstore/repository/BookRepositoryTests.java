@@ -3,7 +3,9 @@ package com.company.bookstore.repository;
 import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
 import com.company.bookstore.model.Publisher;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +33,13 @@ public class BookRepositoryTests {
     @Autowired
     PublisherRepository publisherRepo;
 
+    @Before
+    public void setUp() {
+        publisherRepo.deleteAll();
+        bookRepo.deleteAll();
+        authorRepo.deleteAll();
+    }
+
     @Test
     public void shouldAddAndGetBook() {
 
@@ -56,6 +65,7 @@ public class BookRepositoryTests {
         publisher.setPostalCode("11100");
         publisher.setPhone("111-222-3333");
         publisher.setEmail("mcGrawHill@gmail.com");
+        publisher.setBooks(new HashSet<Book>());
 
         publisher = publisherRepo.save(publisher);
 
@@ -70,7 +80,7 @@ public class BookRepositoryTests {
         book = bookRepo.save(book);
 
         //ACT
-        Optional<Book> book1 = bookRepo.findById(book.getAuthorId());
+        Optional<Book> book1 = bookRepo.findById(book.getBookId());
 
         //Assert...
         assertEquals(book1.get(), book);
@@ -116,7 +126,7 @@ public class BookRepositoryTests {
         book = bookRepo.save(book);
 
         //ACT
-        Optional<Book> book1 = bookRepo.findById(book.getAuthorId());
+        Optional<Book> book1 = bookRepo.findById(book.getBookId());
 
         assertEquals(book1.get(), book);
 
@@ -167,7 +177,7 @@ public class BookRepositoryTests {
         book2.setPublisherId(publisher.getPublisherId());
         book2.setPrice(new BigDecimal("9.99"));
 
-        book = bookRepo.save(book2);
+        book2 = bookRepo.save(book2);
 
         List<Book> bList = bookRepo.findAll();
 
@@ -217,7 +227,7 @@ public class BookRepositoryTests {
         book = bookRepo.save(book);
 
         //Assert.
-        Optional<Book> book1 = bookRepo.findById(book.getAuthorId());
+        Optional<Book> book1 = bookRepo.findById(book.getBookId());
 
         assertEquals(book1.get(), book);
     }
@@ -247,6 +257,7 @@ public class BookRepositoryTests {
         publisher.setPostalCode("11100");
         publisher.setPhone("111-222-3333");
         publisher.setEmail("mcGrawHill@gmail.com");
+        publisher.setBooks(new HashSet<Book>());
 
         publisher = publisherRepo.save(publisher);
 
@@ -261,10 +272,10 @@ public class BookRepositoryTests {
         book = bookRepo.save(book);
 
         //ACT
-        bookRepo.deleteById(book.getAuthorId());
+        bookRepo.deleteById(book.getBookId());
 
         //Assert...
-        Optional<Book> book1 = bookRepo.findById(book.getAuthorId());
+        Optional<Book> book1 = bookRepo.findById(book.getBookId());
         assertFalse(book1.isPresent());
 
     }
