@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -78,6 +80,15 @@ public class BookControllerTests {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/book/1"))
                 .andExpect(status().isOk());
+    }
+    @Test
+    public void testSearchBookByAuthorId() throws Exception {
+    when(bookRepository.findByAuthorId(anyInt())).thenReturn(Optional.of(testBook));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/author/1"))
+                .andExpect(status().isOk());
+
+
     }
 
     @Test

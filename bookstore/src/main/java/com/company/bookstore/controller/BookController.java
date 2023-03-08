@@ -32,6 +32,16 @@ public class BookController {
         }
     }
 
+    @GetMapping("/book/author/{authorId}")
+    public Book searchBookByAuthorId(@PathVariable int authorId) {
+        Optional<Book> returnVal = bookRepo.findById(authorId);
+        if (returnVal.isPresent()) {
+            return returnVal.get();
+        } else {
+            return null;
+        }
+    }
+
     @GetMapping("/book")
     public List<Book> getBooks() {
         return bookRepo.findAll();
