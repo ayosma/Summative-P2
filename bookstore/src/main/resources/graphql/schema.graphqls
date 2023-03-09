@@ -1,0 +1,21 @@
+type Publisher {
+    publisherId: String!
+    books: [Book]
+}
+type Book {
+    bookId: String!
+    author : Author
+    publisher: Publisher
+}
+type Author {
+     authorId: String!
+      books: [Book]
+}
+type Query {
+    publisher: [Publisher]!
+    findPublisherById(id:String): Publisher
+    author: [Author]!
+    findAuthorById(id:String): Author
+    books: [Book]!
+    findBookById(id:String): Book
+}

@@ -13,7 +13,6 @@ import java.util.Optional;
 @RestController
 public class PublisherController {
 
-
     @Autowired
     PublisherRepository publisherRepo;
 
@@ -22,7 +21,6 @@ public class PublisherController {
     public Publisher addPublisher(@RequestBody Publisher publisher) {
         return publisherRepo.save(publisher);
     }
-
 
     @GetMapping("/publisher/{publisherId}")
     public Publisher getPublisherById(@PathVariable int publisherId) {
