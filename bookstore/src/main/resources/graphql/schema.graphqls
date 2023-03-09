@@ -1,21 +1,40 @@
 type Publisher {
-    publisherId: String!
+    publisherId: Int!
+    name: String!
+    street: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    phone: String!
+    email: String!
     books: [Book]
 }
 type Book {
-    bookId: String!
+    bookId: Int!
+    isbn: String!
+    title: String!
+    publishDate: String!
+    authorId: Int!
+    publisherId: Int!
+    price: String!
     author : Author
     publisher: Publisher
 }
 type Author {
-     authorId: String!
-      books: [Book]
+     authorId: Int!
+     firstName: String!
+     lastName: String!
+     street: String!
+     city: String!
+     state: String!
+     postalCode: String!
+     phone: String!
+     email: String!
+    books: [Book]
 }
 type Query {
-    publisher: [Publisher]!
-    findPublisherById(id:String): Publisher
-    author: [Author]!
-    findAuthorById(id:String): Author
-    books: [Book]!
-    findBookById(id:String): Book
+    findPublisherById(id:Int!): Publisher
+    findAuthorById(id:Int!): Author
+    findBookById(id:Int!): Book
+
 }
