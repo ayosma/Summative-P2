@@ -1,7 +1,4 @@
 # Summative-P2
-# Summative-P2-
-
-## Summative-P2-
 
 ### In this project, I worked together with a partner to build a REST API to manage inventory for a bookstore. Also provided support for querying with GraphQL.
 
