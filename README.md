@@ -1,13 +1,10 @@
 # Summative-P2
 
-### In this project, I worked together with a partner to build a REST API to manage inventory for a bookstore. Also provided support for querying with GraphQL.
+## In this project, I worked together with a partner to build a REST API to manage inventory for a bookstore. Also provided support for querying with GraphQL.
 
-### Partner: Ayoub Osman worked on the ControllerTests(AuthorControllerTests, BookControllerTests, PublisherControllerTests)
-### App Walk-though
+### Partner: OBALOLUWA OLANIRAN
 
-Youtube link of the Application Walk-though:
-
-### Required Features
+## Required Features
 
 - [x] 1. Your project must be created in an IntelliJ project called Summative-2-Lastname-Firstname.
 - [x] 2. Initialize the project using start.spring.io using project options as demonstrated previously in class
