@@ -1,4 +1,6 @@
-# Summative-P2
+# Summative Project 2: Bookstore Inventory
+
+![Netflix](https://img.shields.io/badge/Netflix-E50914?style=for-the-badge&logo=netflix&logoColor=white)
 
 ## In this project, I worked together with a partner to build a REST API to manage inventory for a bookstore. Also provided support for querying with GraphQL.
 
